@@ -2,6 +2,7 @@
 const path = require('path');
 //MiniCssExtractPlugin の読み込み
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   //エントリポイント（デフォルトと同じなので省略可）
@@ -10,6 +11,12 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  devServer: {
+    static: './',
+    open: true,
+    hot: false, // optional, but you must not set both hot and liveReload to true
+    liveReload: true,
   },
   module: {
     rules: [
@@ -52,6 +59,7 @@ module.exports = {
       // 抽出する CSS のファイル名
       filename: 'style.css',
     }),
+    new HtmlWebpackPlugin({ template: 'index.html' }),
   ],
   //source-map タイプのソースマップを出力
   devtool: 'source-map',
