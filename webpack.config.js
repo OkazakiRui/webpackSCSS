@@ -66,7 +66,6 @@ module.exports = {
     static: {
       directory: __dirname,
     },
-    open: true,
     watchFiles: ['index.html', 'src/*'],
   },
 };
